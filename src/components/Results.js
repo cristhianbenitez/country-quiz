@@ -26,7 +26,7 @@ export const Results = () => {
         </p>
 
         <button onClick={tryAgain} className="results__try-again-btn">
-          try again
+          Try again
         </button>
       </div>
     </div>
