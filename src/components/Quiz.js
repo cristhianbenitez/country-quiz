@@ -39,7 +39,7 @@ export const Quiz = () => {
   };
 
   const questions = [
-    { question: `${selectedCountry?.name.common} is the capital of` },
+    { question: `${selectedCountry?.capital[0]} is the capital of` },
     {
       question: 'Which country does this flag belong to ?',
       flag: selectedCountry?.flags.png
