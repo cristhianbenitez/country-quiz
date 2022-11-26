@@ -8,10 +8,9 @@ export const Options = ({ countries, correctAnswer, nextQuestion }) => {
 
   const solutionChecker = (e) => {
     const userSolution = e.currentTarget.innerText;
-    const options = document.querySelectorAll('button.quiz__option');
+    const options = document.querySelectorAll('.quiz__option');
     if (userSolution === correctAnswer) {
       e.target.classList.add('correct');
-      setScore(score + 1);
     } else {
       e.target.classList.add('incorrect');
       setIsIncorrect(true);
@@ -34,7 +33,14 @@ export const Options = ({ countries, correctAnswer, nextQuestion }) => {
     if (isIncorrect) {
       setGameState('results');
     }
-
+    if (!isIncorrect) {
+      setScore(score + 1);
+      const options = document.querySelectorAll('.quiz__option');
+      options.forEach((element) => {
+        element.classList.remove('correct');
+        element.classList.remove('incorrect');
+      });
+    }
     setShowNextBtn(false);
     nextQuestion();
   };
