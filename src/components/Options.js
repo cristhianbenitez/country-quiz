@@ -36,9 +36,10 @@ export const Options = ({ countries, correctAnswer, nextQuestion }) => {
     if (!isIncorrect) {
       setScore(score + 1);
       const options = document.querySelectorAll('.quiz__option');
-      options.forEach((element) => {
-        element.classList.remove('correct');
-        element.classList.remove('incorrect');
+      options.forEach((e) => {
+        e.classList.remove('correct');
+        e.classList.remove('incorrect');
+        e.disabled = false;
       });
     }
     setShowNextBtn(false);
