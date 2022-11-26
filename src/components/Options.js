@@ -8,16 +8,17 @@ export const Options = ({ countries, correctAnswer, nextQuestion }) => {
 
   const solutionChecker = (e) => {
     const userSolution = e.currentTarget.innerText;
-    const options = document.querySelectorAll('.option');
+    const options = document.querySelectorAll('button.quiz__option');
     if (userSolution === correctAnswer) {
-      e.target.style.color = 'green';
+      e.target.classList.add('correct');
       setScore(score + 1);
     } else {
-      e.target.style.color = 'red';
+      e.target.classList.add('incorrect');
       setIsIncorrect(true);
-      options.forEach((e) => {
-        if (e.innerText === correctAnswer) {
-          e.style.color = 'green';
+
+      options.forEach((element) => {
+        if (element.innerText === correctAnswer) {
+          element.classList.add('correct');
         }
       });
     }
@@ -33,16 +34,17 @@ export const Options = ({ countries, correctAnswer, nextQuestion }) => {
     if (isIncorrect) {
       setGameState('results');
     }
+
     setShowNextBtn(false);
     nextQuestion();
   };
 
   return (
-    <>
-      <div>
+    <div className="quiz__body">
+      <div className="quiz__options-container">
         {countries.map(({ name }) => (
           <button
-            className="option"
+            className="quiz__option"
             key={'child_' + name.common}
             onClick={solutionChecker}
           >
@@ -50,7 +52,11 @@ export const Options = ({ countries, correctAnswer, nextQuestion }) => {
           </button>
         ))}
       </div>
-      {showNextBtn && <button onClick={handleNextQuestion}>next</button>};
-    </>
+      {showNextBtn && (
+        <button onClick={handleNextQuestion} className="quiz__next-btn">
+          Next
+        </button>
+      )}
+    </div>
   );
 };
