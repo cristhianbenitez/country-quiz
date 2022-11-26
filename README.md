@@ -14,4 +14,4 @@ User story: When I answer incorrectly, I can see my results and try again
 
 User story: I can try again
 
-# [LIVE VERSION](country-quiz-devchallenge.surge.sh)
+# [LIVE VERSION](https://country-quiz-devchallenge.surge.sh/)
